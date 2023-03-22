@@ -5,7 +5,11 @@
 .form-row {
     overflow: hidden;
     padding: 10px;
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     border-bottom: 1px solid var(--hairline-color);
 }
 
@@ -27,7 +31,11 @@ form .form-row p {
 label {
     font-weight: normal;
     color: var(--body-quiet-color);
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
 }
 
 .required label, label.required {
@@ -37,6 +45,7 @@ label {
 
 /* RADIO BUTTONS */
 
+<<<<<<< HEAD
 form ul.radiolist li {
     list-style-type: none;
 }
@@ -47,6 +56,21 @@ form ul.radiolist label {
 }
 
 form ul.radiolist input[type="radio"] {
+=======
+form div.radiolist div {
+    padding-right: 7px;
+}
+
+form div.radiolist.inline div {
+    display: inline-block;
+}
+
+form div.radiolist label {
+    width: auto;
+}
+
+form div.radiolist input[type="radio"] {
+>>>>>>> origin/master
     margin: -2px 4px 0 0;
     padding: 0;
 }
@@ -84,6 +108,10 @@ form ul.inline li {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 170px;
+<<<<<<< HEAD
+=======
+    overflow-wrap: break-word;
+>>>>>>> origin/master
 }
 
 .aligned ul label {
@@ -105,7 +133,11 @@ form .aligned ul {
     padding-left: 10px;
 }
 
+<<<<<<< HEAD
 form .aligned ul.radiolist {
+=======
+form .aligned div.radiolist {
+>>>>>>> origin/master
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -244,7 +276,11 @@ fieldset.monospace textarea {
 /* SUBMIT ROW */
 
 .submit-row {
+<<<<<<< HEAD
     padding: 12px 14px;
+=======
+    padding: 12px 14px 7px;
+>>>>>>> origin/master
     margin: 0 0 20px;
     background: var(--darkened-bg);
     border: 1px solid var(--hairline-color);
@@ -260,11 +296,19 @@ body.popup .submit-row {
 .submit-row input {
     height: 35px;
     line-height: 15px;
+<<<<<<< HEAD
     margin: 0 0 0 5px;
 }
 
 .submit-row input.default {
     margin: 0 0 0 8px;
+=======
+    margin: 0 0 5px 5px;
+}
+
+.submit-row input.default {
+    margin: 0 0 5px 8px;
+>>>>>>> origin/master
     text-transform: uppercase;
 }
 
@@ -284,6 +328,10 @@ body.popup .submit-row {
     padding: 10px 15px;
     height: 15px;
     line-height: 15px;
+<<<<<<< HEAD
+=======
+    margin-bottom: 5px;
+>>>>>>> origin/master
     color: var(--button-fg);
 }
 
@@ -349,10 +397,13 @@ body.popup .submit-row {
     width: 2.2em;
 }
 
+<<<<<<< HEAD
 .vTextField, .vUUIDField {
     width: 20em;
 }
 
+=======
+>>>>>>> origin/master
 .vIntegerField {
     width: 5em;
 }
@@ -365,6 +416,13 @@ body.popup .submit-row {
     width: 5em;
 }
 
+<<<<<<< HEAD
+=======
+.vTextField, .vUUIDField {
+    width: 20em;
+}
+
+>>>>>>> origin/master
 /* INLINES */
 
 .inline-group {
@@ -388,7 +446,11 @@ body.popup .submit-row {
     margin: 0;
     color: var(--body-quiet-color);
     padding: 5px;
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     background: var(--darkened-bg);
     border-top: 1px solid var(--hairline-color);
     border-bottom: 1px solid var(--hairline-color);
@@ -400,7 +462,11 @@ body.popup .submit-row {
 
 .inline-related h3 span.delete label {
     margin-left: 2px;
+<<<<<<< HEAD
     font-size: 11px;
+=======
+    font-size: 0.6875rem;
+>>>>>>> origin/master
 }
 
 .inline-related fieldset {
@@ -413,7 +479,11 @@ body.popup .submit-row {
 .inline-related fieldset.module h3 {
     margin: 0;
     padding: 2px 5px 3px 5px;
+<<<<<<< HEAD
     font-size: 11px;
+=======
+    font-size: 0.6875rem;
+>>>>>>> origin/master
     text-align: left;
     font-weight: bold;
     background: #bcd;
@@ -454,7 +524,11 @@ body.popup .submit-row {
     height: 1.1em;
     padding: 2px 9px;
     overflow: hidden;
+<<<<<<< HEAD
     font-size: 9px;
+=======
+    font-size: 0.5625rem;
+>>>>>>> origin/master
     font-weight: bold;
     color: var(--body-quiet-color);
     _width: 700px;
@@ -489,7 +563,11 @@ body.popup .submit-row {
 .inline-group .tabular tr.add-row td a {
     background: url(../img/icon-addlink.svg) 0 1px no-repeat;
     padding-left: 16px;
+<<<<<<< HEAD
     font-size: 12px;
+=======
+    font-size: 0.75rem;
+>>>>>>> origin/master
 }
 
 .empty-form {

@@ -153,6 +153,7 @@ Requires core.js and SelectBox.js.
             // Move selected from_box options to to_box
             SelectBox.move(field_id + '_from', field_id + '_to');
 
+<<<<<<< HEAD
             if (!is_stacked) {
                 // In horizontal mode, give the same height to the two boxes.
                 const j_from_box = document.getElementById(field_id + '_from');
@@ -171,6 +172,8 @@ Requires core.js and SelectBox.js.
                 j_to_box.style.height = height + 'px';
             }
 
+=======
+>>>>>>> origin/master
             // Initial icon refresh
             SelectFilter.refresh_icons(field_id);
         },

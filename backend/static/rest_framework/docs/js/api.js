@@ -131,6 +131,7 @@ $(function () {
         if (value !== undefined) {
           params[paramKey] = value
         }
+<<<<<<< HEAD
       } else if (dataType === 'array' && paramValue) {
         try {
           params[paramKey] = JSON.parse(paramValue)
@@ -138,6 +139,9 @@ $(function () {
           // Ignore malformed JSON
         }
       } else if (dataType === 'object' && paramValue) {
+=======
+      } else if ((dataType === 'array' && paramValue) || (dataType === 'object' && paramValue)) {
+>>>>>>> origin/master
         try {
           params[paramKey] = JSON.parse(paramValue)
         } catch (err) {
