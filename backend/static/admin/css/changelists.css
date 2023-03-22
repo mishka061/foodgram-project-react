@@ -84,7 +84,11 @@
 
 #toolbar form input {
     border-radius: 4px;
+<<<<<<< HEAD
     font-size: 14px;
+=======
+    font-size: 0.875rem;
+>>>>>>> origin/master
     padding: 5px;
     color: var(--body-fg);
 }
@@ -95,7 +99,11 @@
     padding: 2px 5px;
     margin: 0;
     vertical-align: top;
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     max-width: 100%;
 }
 
@@ -105,7 +113,11 @@
 
 #toolbar form input[type="submit"] {
     border: 1px solid var(--border-color);
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     padding: 4px 8px;
     margin: 0;
     vertical-align: middle;
@@ -125,6 +137,13 @@
     margin-right: 4px;
 }
 
+<<<<<<< HEAD
+=======
+#changelist-search .help {
+    word-break: break-word;
+}
+
+>>>>>>> origin/master
 /* FILTER COLUMN */
 
 #changelist-filter {
@@ -136,7 +155,11 @@
 }
 
 #changelist-filter h2 {
+<<<<<<< HEAD
     font-size: 14px;
+=======
+    font-size: 0.875rem;
+>>>>>>> origin/master
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 5px 15px;
@@ -144,12 +167,42 @@
     border-bottom: none;
 }
 
+<<<<<<< HEAD
 #changelist-filter h3 {
+=======
+#changelist-filter h3,
+#changelist-filter details summary {
+>>>>>>> origin/master
     font-weight: 400;
     padding: 0 15px;
     margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
+=======
+#changelist-filter details summary > * {
+    display: inline;
+}
+
+#changelist-filter details > summary {
+    list-style-type: none;
+}
+
+#changelist-filter details > summary::-webkit-details-marker {
+    display: none;
+}
+
+#changelist-filter details > summary::before {
+    content: '→';
+    font-weight: bold;
+    color: var(--link-hover-color);
+}
+
+#changelist-filter details[open] > summary::before {
+    content: '↓';
+}
+
+>>>>>>> origin/master
 #changelist-filter ul {
     margin: 5px 0;
     padding: 0 15px 15px;
@@ -169,8 +222,12 @@
 #changelist-filter a {
     display: block;
     color: var(--body-quiet-color);
+<<<<<<< HEAD
     text-overflow: ellipsis;
     overflow-x: hidden;
+=======
+    word-break: break-word;
+>>>>>>> origin/master
 }
 
 #changelist-filter li.selected {
@@ -190,7 +247,11 @@
 }
 
 #changelist-filter #changelist-filter-clear a {
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     padding-bottom: 10px;
     border-bottom: 1px solid var(--hairline-color);
 }
@@ -221,6 +282,7 @@
     color: var(--link-hover-color);
 }
 
+<<<<<<< HEAD
 /* PAGINATOR */
 
 .paginator {
@@ -267,6 +329,8 @@
     background: var(--link-hover-color);
 }
 
+=======
+>>>>>>> origin/master
 /* ACTIONS */
 
 .filtered .actions {
@@ -292,17 +356,24 @@
     width: 100%;
 }
 
+<<<<<<< HEAD
 #changelist .actions.selected { /* XXX Probably unused? */
     background: var(--body-bg);
     border-top: 1px solid var(--body-bg);
     border-bottom: 1px solid #edecd6;
 }
 
+=======
+>>>>>>> origin/master
 #changelist .actions span.all,
 #changelist .actions span.action-counter,
 #changelist .actions span.clear,
 #changelist .actions span.question {
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     margin: 0 0.5em;
 }
 
@@ -316,7 +387,11 @@
     color: var(--body-fg);
     border: 1px solid var(--border-color);
     border-radius: 4px;
+<<<<<<< HEAD
     font-size: 14px;
+=======
+    font-size: 0.875rem;
+>>>>>>> origin/master
     padding: 0 0 0 4px;
     margin: 0;
     margin-left: 10px;
@@ -329,11 +404,19 @@
 #changelist .actions label {
     display: inline-block;
     vertical-align: middle;
+<<<<<<< HEAD
     font-size: 13px;
 }
 
 #changelist .actions .button {
     font-size: 13px;
+=======
+    font-size: 0.8125rem;
+}
+
+#changelist .actions .button {
+    font-size: 0.8125rem;
+>>>>>>> origin/master
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background: var(--body-bg);

@@ -12,7 +12,12 @@
 }
 
 .login #header h1 {
+<<<<<<< HEAD
     font-size: 18px;
+=======
+    font-size: 1.125rem;
+    margin: 0;
+>>>>>>> origin/master
 }
 
 .login #header h1 a {
