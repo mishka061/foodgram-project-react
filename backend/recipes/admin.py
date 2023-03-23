@@ -26,9 +26,9 @@ class RecipeAdmin(ModelAdmin):
               'text',
               ('tags', 'cooking_time'),
               'favorite')
-    inlines = (RecipeIngredientInline,)
+    inline = ('recipe', 'ingredient', )
     min_num = 1
-    
+
     def display_tags(self, obj):
         return ', '.join([tag.name for tag in obj.tags.all()])
     display_tags.short_description = 'Теги'
