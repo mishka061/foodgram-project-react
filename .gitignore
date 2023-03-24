@@ -130,5 +130,5 @@ dmypy.json
 
 # .idea
 .idea
-./back_static/
-./static/
+back_static/
+static/
