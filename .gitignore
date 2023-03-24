@@ -132,7 +132,7 @@ dmypy.json
 .idea
 
 
-#static
+#static_abr
 static/
 back_static/
 
