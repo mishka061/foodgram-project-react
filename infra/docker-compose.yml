@@ -1,11 +1,12 @@
-version: '3.3'
+version: '2.6'
 services:
   db:
     image: postgres:13.0-alpine
     volumes:
       - db_value:/var/lib/postgresql/data/
     env_file:
-      - .env
+      - ./.env
+    restart: always
 
   frontend:
     image: mishka061/foodgram_frontend:v1
@@ -23,10 +24,10 @@ services:
     depends_on:
       - db
     env_file:
-      - .env
+      - ./.env
 
   nginx:
-    image: nginx:1.19.3
+    image: nginx:1.21.3-alpine
     ports:
       - "80:80"
     volumes:
@@ -37,6 +38,7 @@ services:
       - media_value:/var/html/media/
     depends_on:
       - backend
+    restart: always
 
 volumes:
   db_value:
