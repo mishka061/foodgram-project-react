@@ -15,7 +15,7 @@ SECRET_KEY = 12345
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['158.160.30.74', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['158.160.30.74', 'localhost', '127.0.0.1', 'backend']
 
 CSRF_TRUSTED_ORIGINS = ['http://158.160.30.74']
 
