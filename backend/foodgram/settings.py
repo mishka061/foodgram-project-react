@@ -16,11 +16,10 @@ SECRET_KEY = 12345
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
-HOST_IP = os.getenv('HOST',None)
+HOST_IP = os.getenv('HOST', None)
 if HOST_IP:
     CSRF_TRUSTED_ORIGINS = [f'http://{HOST_IP}']
     ALLOWED_HOSTS = [HOST_IP]
-
 
 # Application definition
 
