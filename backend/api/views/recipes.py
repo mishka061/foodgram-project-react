@@ -14,7 +14,7 @@ from api.serializers.recipes import (FavoriteSerializer, IngredientSerializer,
                                      RecipeSerializer, ShoppingCartSerializer,
                                      TagSerializer)
 from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
-from foodgram.settings import FILENAME
+from django.conf import settings
 
 
 class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
