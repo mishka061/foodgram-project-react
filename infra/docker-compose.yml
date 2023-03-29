@@ -10,7 +10,7 @@ services:
   frontend:
     image: mishka061/foodgram_frontend:v1
     volumes:
-      - ./frontend/:/app/result_build/
+      - ../frontend/:/app/result_build/
 
   backend:
     image: mishka061/foodgram_backend:v1
@@ -18,6 +18,7 @@ services:
     volumes:
       - static_value:/app/static/
       - media_value:/app/media/
+      - redoc:/app/api/docs/
     depends_on:
       - db
     env_file:
@@ -25,20 +26,21 @@ services:
 
   nginx:
     image: nginx:1.21.3-alpine
-    restart: always
     ports:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-      - ./frontend/build:/usr/share/nginx/html/
+      - ../frontend/build:/usr/share/nginx/html/
       - ./docs/:/usr/share/nginx/html/api/docs/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
 
     depends_on:
       - backend
+    restart: always
 
 volumes:
   db_value:
   static_value:
   media_value:
+  redoc:
