@@ -139,7 +139,7 @@ back_static/
 # staticfiles and mediafiles
 backend/media/
 backend/static/
-backend/back_static/
+backend/static/
 # data/
 frontend/
 media/
