@@ -2,6 +2,11 @@
 ## Проект Foodgram
 
 ![workflow](https://github.com/mishka061/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
+ 
+![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+
+ Сайт http://158.160.30.74/admin/
+
 
 Foodgram - продуктовый помощник с базой кулинарных рецептов. Позволяет публиковать рецепты, сохранять избранные, а также формировать список покупок для выбранных рецептов. Можно подписываться на любимых авторов.
 
