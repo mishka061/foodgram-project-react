@@ -122,7 +122,7 @@ class RecipeIngredient(models.Model):
                 limit_value=1,
                 message='Количество должно быть больше нуля'),
             MaxValueValidator(
-                limit_value=30,
+                limit_value=1000,
                 message='Количество не может быть больше 1000.'),
         )
     )
