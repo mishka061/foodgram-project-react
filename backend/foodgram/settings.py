@@ -162,7 +162,7 @@ DJOSER = {
         "current_user": "api.serializers.users.UsersSerializer",
     },
 }
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
-
-FILENAME = 'shopping_cart.txt'
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_URLS_REGEX = r'^/api/.*$'
+#
+# FILENAME = 'shopping_cart.txt'
