@@ -1,11 +1,13 @@
 from datetime import datetime
+from django.conf import settings
 from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from djoser.views import UserViewSet
 from recipes.models import (Favourite, Ingredient, IngredientInRecipe, Recipe,
                             ShoppingCart, Tag)
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import (SAFE_METHODS,
                                         IsAuthenticated,
@@ -13,29 +15,19 @@ from rest_framework.permissions import (SAFE_METHODS,
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-
-from .filters import IngredientFilter, RecipeFilter
-from .pagination import CustomPagination
-from .permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
-from .serializers import (IngredientSerializer, RecipeReadSerializer,
-                          RecipeShortSerializer, RecipeWriteSerializer,
-                          TagSerializer)
-from rest_framework import status, viewsets
 from rest_framework.permissions import AllowAny
-from api.filters import IngredientFilter, RecipeFilter
-from api.paginations import LimitPagination
-from api.permissions import IsAuthorOrReadOnly
-from api.serializers.recipes import (FavoriteSerializer, IngredientSerializer,
-                                     RecipeSerializer, ShoppingCartSerializer,
-                                     TagSerializer)
-from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
-from django.conf import settings
-from djoser.views import UserViewSet
-from api.paginations import LimitPagination
-from api.serializers.users import FollowSerializer, UsersSerializer
-from users.models import Follow, User
 
-
+# from api.filters import IngredientFilter, RecipeFilter
+# from api.paginations import LimitPagination, CustomPagination
+# from api.permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
+# from api.serializers import (IngredientSerializer, RecipeReadSerializer,
+#                           RecipeShortSerializer, RecipeWriteSerializer,
+#                           TagSerializer, FavoriteSerializer, IngredientSerializer,
+#                           RecipeSerializer, ShoppingCartSerializer,
+#                           TagSerializer)
+# from api.serializers.users import FollowSerializer, UsersSerializer
+# from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
+# from users.models import Follow, User
 class IngredientViewSet(ReadOnlyModelViewSet):
     """Вьюсет для обработки запросов на получение ингредиентов."""
     queryset = Ingredient.objects.all()
@@ -102,6 +94,7 @@ class RecipeViewSet(ModelViewSet):
         pagination_class=None,
         permission_classes=[IsAuthorOrReadOnly]
     )
+
     def download_basket(self, request):
         ingredients = RecipeIngredient.objects.filter(
             recipe__shopping_cart__user=request.user
