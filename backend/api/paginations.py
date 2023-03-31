@@ -5,3 +5,8 @@ class LimitPagination(PageNumberPagination):
     page_size = 6
     page_size_query_param = 'limit'
     max_page_size = 20
+
+class CustomPagination(PageNumberPagination):
+    page_size = 6
+    page_size_query_param = 'limit'
+    max_page_size = 20

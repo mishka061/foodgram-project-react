@@ -12,13 +12,13 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
-from .filters import IngredientFilter, RecipeFilter
+from backend.api.filters import IngredientFilter, RecipeFilter
 from .pagination import CustomPagination
 from rest_framework.pagination import PageNumberPagination
-from .permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
-from .serializers import (IngredientSerializer, RecipeReadSerializer,
-                          RecipeShortSerializer, RecipeWriteSerializer,
-                          TagSerializer)
+from backend.api.permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
+from backend.api.serializers import (IngredientSerializer, RecipeReadSerializer,
+                                     RecipeShortSerializer, RecipeWriteSerializer,
+                                     TagSerializer)
 
 
 class IngredientViewSet(ReadOnlyModelViewSet):
