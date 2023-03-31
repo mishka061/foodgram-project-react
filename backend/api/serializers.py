@@ -258,6 +258,7 @@ class RecipeShortSerializer(ModelSerializer):
             'cooking_time'
         )
 
+
 class UsersCreateSerializer(UserCreateSerializer):
     """Сериализатор для обработки запросов на создание пользователя.
     Валидирует создание пользователя с юзернеймом 'me'."""
@@ -324,6 +325,7 @@ class FollowSerializer(UsersSerializer):
 
     def get_recipes_count(self, object):
         return object.recipes.count()
+
 
 class TagSerializer(serializers.ModelSerializer):
     """Сериализатор для работы с тегами."""
