@@ -410,6 +410,7 @@ class RecipeInfoSerializer(ModelSerializer):
         model = Recipe
         fields = ('id', 'name', 'image', 'cooking_time')
 
+
 class UsersCreateSerializer(UserCreateSerializer):
     """Сериализатор для обработки запросов на создание пользователя.
     Валидирует создание пользователя с юзернеймом 'me'."""
