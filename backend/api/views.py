@@ -17,17 +17,6 @@ from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from rest_framework.permissions import AllowAny
 
-# from api.filters import IngredientFilter, RecipeFilter
-# from api.paginations import LimitPagination, CustomPagination
-# from api.permissions import IsAdminOrReadOnly, IsAuthorOrReadOnly
-# from api.serializers import (IngredientSerializer, RecipeReadSerializer,
-#                           RecipeShortSerializer, RecipeWriteSerializer,
-#                           TagSerializer, FavoriteSerializer, IngredientSerializer,
-#                           RecipeSerializer, ShoppingCartSerializer,
-#                           TagSerializer)
-# from api.serializers.users import FollowSerializer, UsersSerializer
-# from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
-# from users.models import Follow, User
 class IngredientViewSet(ReadOnlyModelViewSet):
     """Вьюсет для обработки запросов на получение ингредиентов."""
     queryset = Ingredient.objects.all()
@@ -94,7 +83,6 @@ class RecipeViewSet(ModelViewSet):
         pagination_class=None,
         permission_classes=[IsAuthorOrReadOnly]
     )
-
     def download_basket(self, request):
         ingredients = RecipeIngredient.objects.filter(
             recipe__shopping_cart__user=request.user
