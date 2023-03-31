@@ -122,6 +122,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 6
 }
 
+SIMPLE_JWT = {
+    # Устанавливаем срок жизни токена
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -157,9 +163,9 @@ DJOSER = {
         'user': ['djoser.permissions.CurrentUserOrAdminOrReadOnly']
     },
     "SERIALIZERS": {
-        "user_create": "api.serializers.users.UsersCreateSerializer",
-        "user": "api.serializers.users.UsersSerializer",
-        "current_user": "api.serializers.users.UsersSerializer",
+        "user_create": "api.serializers.UsersCreateSerializer",
+        "user": "api.serializers.UsersSerializer",
+        "current_user": "api.serializers.UsersSerializer",
     },
 }
 CORS_ORIGIN_ALLOW_ALL = True

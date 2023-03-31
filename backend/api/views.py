@@ -1,40 +1,41 @@
 from datetime import datetime
-from django.conf import settings
+
 from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.conf import settings
 from django_filters.rest_framework import DjangoFilterBackend
-from djoser.views import UserViewSet
-from backend.api.filters import IngredientFilter, RecipeFilter
-from backend.api.paginations import CustomPagination, LimitPagination
-from backend.api.permissions import IsAuthorOrReadOnly
-from backend.api.serializers import (
-    FavoriteSerializer, FollowSerializer,
-    IngredientSerializer, RecipeReadSerializer,
-    RecipeSerializer, RecipeShortSerializer,
-    RecipeWriteSerializer, ShoppingCartSerializer,
-    TagSerializer)
-from backend.recipes.models import RecipeIngredient
-from backend.users.models import Follow, User
-from recipes.models import (Favourite, Ingredient,
-                            IngredientInRecipe, Recipe,
+from recipes.models import (Favorite, Ingredient,
+                            Recipe,
+                            RecipeIngredient,
                             ShoppingCart, Tag)
+from django.db.models import Sum
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny
 from rest_framework.permissions import (SAFE_METHODS,
                                         IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-from rest_framework.permissions import AllowAny
+from .filters import IngredientFilter, RecipeFilter
+from .paginations import CustomPagination, LimitPagination
+from .permissions import IsAuthorOrReadOnly
+from .serializers import (IngredientSerializer, RecipeSerializer,
+                         RecipeReadSerializer, FavoriteSerializer, ShoppingCartSerializer,
+                         UsersCreateSerializer, UserSerializer, FollowSerializer,
+                         RecipeShortSerializer, RecipeWriteSerializer,
+                         TagSerializer)
+
+from users.models import Follow, User
 
 
 class IngredientViewSet(ReadOnlyModelViewSet):
     """Вьюсет для обработки запросов на получение ингредиентов."""
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    permission_classes = (AllowAny, IsAdminOrReadOnly,)
+    permission_classes = (AllowAny,)
     filter_backends = (DjangoFilterBackend,)
     filterset_class = IngredientFilter
 
@@ -43,7 +44,7 @@ class TagViewSet(ReadOnlyModelViewSet):
     """Вьюсет для обработки запросов на получение тегов."""
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
-    permission_classes = (AllowAny, IsAdminOrReadOnly,)
+    permission_classes = (AllowAny,)
 
 
 class RecipeViewSet(ModelViewSet):
@@ -51,7 +52,7 @@ class RecipeViewSet(ModelViewSet):
      Обработка запросов создания/получения/редактирования/удаления рецептов
      Добавление/удаление рецепта в избранное и список покупок"""
     queryset = Recipe.objects.all()
-    permission_classes = (IsAuthorOrReadOnly | IsAdminOrReadOnly,)
+    permission_classes = (IsAuthorOrReadOnly,)
     pagination_class = CustomPagination
     filter_backends = (DjangoFilterBackend,)
     filterset_class = RecipeFilter
@@ -196,12 +197,12 @@ class RecipeViewSet(ModelViewSet):
         return response
 
 
-class UsersViewSet(UserViewSet):
+class UsersViewSet(ModelViewSet):
     """Вьюсет для работы с пользователями и подписками.
     Обработка запросов на создание/получение пользователей и
     создание/получение/удаления подписок."""
     queryset = User.objects.all()
-    serializer_class = UsersSerializer
+    serializer_class = UserSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = LimitPagination
     http_method_names = ['get', 'post', 'delete', 'head']

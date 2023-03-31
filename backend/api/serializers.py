@@ -4,20 +4,15 @@ from django.db.models import F
 from django.shortcuts import get_object_or_404
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from drf_extra_fields.fields import Base64ImageField
-from recipes.models import Ingredient, IngredientInRecipe, Recipe, Tag
+from recipes.models import (Favorite, Ingredient,
+                            Recipe, RecipeIngredient,
+                            ShoppingCart, Tag)
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.fields import IntegerField, SerializerMethodField
 from rest_framework.relations import PrimaryKeyRelatedField
-from rest_framework.serializers import ModelSerializer
-from users.models import Subscribe
-from drf_extra_fields.fields import Base64ImageField
-
 from rest_framework import serializers
-from api.serializers.users import UsersSerializer
-from recipes.models import (Favorite, Ingredient, Recipe, RecipeIngredient,
-                            ShoppingCart, Tag)
-
+from rest_framework.serializers import ModelSerializer
 
 from users.models import Follow, User
 
@@ -154,7 +149,7 @@ class IngredientInRecipeWriteSerializer(ModelSerializer):
     id = IntegerField(write_only=True)
 
     class Meta:
-        model = IngredientInRecipe
+        model = RecipeIngredient
         fields = ('id', 'amount')
 
 
@@ -294,7 +289,7 @@ class AddIngredientSerializer(ModelSerializer):
 class RecipeSerializer(ModelSerializer):
     """Сериализатор создания рецепта.
     Валидирует ингредиенты ответ возвращает GetRecipeSerializer."""
-    author = UsersSerializer(read_only=True)
+    author = UserSerializer(read_only=True)
     image = Base64ImageField()
     ingredients = AddIngredientSerializer(many=True)
 
@@ -354,7 +349,7 @@ class RecipeSerializer(ModelSerializer):
 class GetRecipeSerializer(ModelSerializer):
     """Сериализатор для отображения полной информации о рецепте."""
     tags = TagSerializer(many=True)
-    author = UsersSerializer(read_only=True)
+    author = UserSerializer(read_only=True)
     ingredients = RecipeIngredientSerializer(read_only=True, many=True,
                                              source='recipe_ingredient')
     is_favorited = serializers.SerializerMethodField(read_only=True)
