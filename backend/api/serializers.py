@@ -262,22 +262,8 @@ class RecipeShortSerializer(ModelSerializer):
             'cooking_time'
         )
 
-class TagSerializer(serializers.ModelSerializer):
-    """Сериализатор для работы с тегами."""
-    class Meta:
-        model = Tag
-        fields = '__all__'
-        read_only_fields = ('__all__',)
 
-
-class IngredientSerializer(serializers.ModelSerializer):
-    """Сериализатор для работы с ингредиентами."""
-    class Meta:
-        model = Ingredient
-        fields = ('id', 'name', 'measurement_unit')
-
-
-class RecipeIngredientSerializer(serializers.ModelSerializer):
+class RecipeIngredientSerializer(ModelSerializer):
     """Сериализатор для подробного описания ингредиентов в рецепте."""
     name = serializers.CharField(
         source='ingredient.name', read_only=True)
@@ -291,7 +277,7 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'measurement_unit', 'amount')
 
 
-class AddIngredientSerializer(serializers.ModelSerializer):
+class AddIngredientSerializer(ModelSerializer):
     """Сериализатор для добавления ингредиента при создании рецепта."""
     id = serializers.PrimaryKeyRelatedField(
         queryset=Ingredient.objects.all(),
@@ -302,7 +288,7 @@ class AddIngredientSerializer(serializers.ModelSerializer):
         fields = ('id', 'amount')
 
 
-class RecipeSerializer(serializers.ModelSerializer):
+class RecipeSerializer(ModelSerializer):
     """Сериализатор создания рецепта.
     Валидирует ингредиенты ответ возвращает GetRecipeSerializer."""
     author = UsersSerializer(read_only=True)
@@ -362,7 +348,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         return GetRecipeSerializer(instance, context=context).data
 
 
-class GetRecipeSerializer(serializers.ModelSerializer):
+class GetRecipeSerializer(ModelSerializer):
     """Сериализатор для отображения полной информации о рецепте."""
     tags = TagSerializer(many=True)
     author = UsersSerializer(read_only=True)
@@ -390,7 +376,7 @@ class GetRecipeSerializer(serializers.ModelSerializer):
         return object.shopping_cart.filter(user=user).exists()
 
 
-class FavoriteSerializer(serializers.ModelSerializer):
+class FavoriteSerializer(ModelSerializer):
     """Сериализатор добавления/удаления рецепта в избранное."""
     class Meta:
         model = Favorite
@@ -415,7 +401,7 @@ class ShoppingCartSerializer(FavoriteSerializer):
         model = ShoppingCart
 
 
-class RecipeInfoSerializer(serializers.ModelSerializer):
+class RecipeInfoSerializer(ModelSerializer):
     """Сериализатор для отображения краткой информации о рецепте."""
     class Meta:
         model = Recipe
