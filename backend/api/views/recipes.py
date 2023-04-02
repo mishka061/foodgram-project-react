@@ -10,9 +10,6 @@ from rest_framework.response import Response
 from api.filters import IngredientFilter, RecipeFilter
 from api.paginations import LimitPagination
 from api.permissions import IsAuthorOrReadOnly
-# from api.serializers.recipes import (FavoriteSerializer, IngredientSerializer,
-#                                      RecipeSerializer, ShoppingCartSerializer,
-#                                      TagSerializer)
 from recipes.models import Ingredient, Recipe, RecipeIngredient, Tag
 from foodgram.settings import FILENAME
 
