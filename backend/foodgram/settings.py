@@ -16,8 +16,8 @@ SECRET_KEY = 12345
 DEBUG = False
 
 ALLOWED_HOSTS = ['51.250.101.96', 'localhost', '127.0.0.1', 'backend']
-#CSRF_TRUSTED_ORIGINS = ['http://51.250.101.96']
-# Application definition
+
+# CSRF_TRUSTED_ORIGINS = ['http://51.250.101.96']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -72,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodgram.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -94,7 +93,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', '5432')
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -143,16 +141,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/back_media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'back_media')
-
-# djoser settings
 
 DJOSER = {
     'HIDE_USERS': False,
@@ -167,8 +160,5 @@ DJOSER = {
         "current_user": "api.serializers.users.UsersSerializer",
     },
 }
-
-#CORS_ORIGIN_ALLOW_ALL = True
-#CORS_URLS_REGEX = r'^/api/.*$'
 
 FILENAME = 'shopping_cart.txt'
