@@ -5,10 +5,10 @@
  
 ![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
 
-Админ http://158.160.30.74/admin/
+Админ http://51.250.101.96/admin/
 
 
-Сайт http://158.160.30.74/recipes/
+Сайт http://51.250.101.96/recipes/
 
 
 Foodgram - продуктовый помощник с базой кулинарных рецептов. Позволяет публиковать рецепты, сохранять избранные, а также формировать список покупок для выбранных рецептов. Можно подписываться на любимых авторов.
@@ -81,7 +81,7 @@ sudo docker compose exec backend python manage.py createsuperuser
 
 - Собрать статику:
 ```
-sudo docker compose exec backend python manage.py collectstatic --noinput
+sudo docker compose exec backend python manage.py collectstatic --no-input
 ```
 
 - Наполнить базу данных содержимым из файла ingredients.json:
@@ -120,11 +120,6 @@ DB_PORT=5432
 SECRET_KEY='секретный ключ Django'
 ```
 
-- Создать и запустить контейнеры Docker, последовательно выполнить команды по созданию миграций, сбору статики, 
-созданию суперпользователя, как указано выше.
-```
-docker-compose -f docker-compose-local.yml up -d
-```
 
 ### Автор backend'а:
 - Алена Котова
