@@ -11,11 +11,13 @@ def get_list_allowed(allowed: str) -> list:
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.getenv('SECRET_KEY', default='your_secret_key')
+SECRET_KEY = 12345
 
-DEBUG = os.getenv('DEBUG', default=True)
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['158.160.30.74', 'localhost', '127.0.0.1', 'backend']
+
+CSRF_TRUSTED_ORIGINS = ['http://158.160.30.74']
 
 # Application definition
 
