@@ -11,13 +11,14 @@ def get_list_allowed(allowed: str) -> list:
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = os.getenv('SECRET_KEY', default='your_secret_key')
+SECRET_KEY = 12345
 
-DEBUG = os.getenv('DEBUG', default=True)
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['51.250.101.96', 'localhost', '127.0.0.1', 'backend']
 
-# Application definition
+CSRF_TRUSTED_ORIGINS = ['http://51.250.101.96']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -72,28 +73,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodgram.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
-            'NAME': os.getenv('DB_NAME', 'postgres'),
-            'USER': os.getenv('POSTGRES_USER', 'postgres'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
-            'HOST': os.getenv('DB_HOST', 'db'),
-            'PORT': os.getenv('DB_PORT', '5432')
-        }
-    }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+DATABASES = {
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
+}
 
 
 # Password validation
@@ -114,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -128,7 +125,6 @@ REST_FRAMEWORK = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -145,17 +141,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/back_static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'back_static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/back_media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'back_media')
-
-# djoser settings
 
 DJOSER = {
     'HIDE_USERS': False,
