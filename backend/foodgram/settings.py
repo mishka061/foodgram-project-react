@@ -16,7 +16,7 @@ SECRET_KEY = 12345
 DEBUG = False
 
 ALLOWED_HOSTS = ['51.250.101.96', 'localhost', '127.0.0.1', 'backend']
-CSRF_TRUSTED_ORIGINS = ['http://51.250.101.96']
+#CSRF_TRUSTED_ORIGINS = ['http://51.250.101.96']
 # Application definition
 
 INSTALLED_APPS = [
@@ -168,7 +168,7 @@ DJOSER = {
     },
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
+#CORS_ORIGIN_ALLOW_ALL = True
+#CORS_URLS_REGEX = r'^/api/.*$'
 
 FILENAME = 'shopping_cart.txt'
