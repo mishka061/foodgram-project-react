@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 12345
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['51.250.101.96', 'localhost', '127.0.0.1', 'backend']
 
