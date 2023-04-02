@@ -15,9 +15,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='your_secret_key')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['51.250.101.96', 'localhost', 'goodmood.hopto.org']
+ALLOWED_HOSTS = ['158.160.30.74', 'localhost', '127.0.0.1', 'backend']
 
-CSRF_TRUSTED_ORIGINS = ['http://51.250.101.96']
+CSRF_TRUSTED_ORIGINS = ['http://158.160.30.74']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
