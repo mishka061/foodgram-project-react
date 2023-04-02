@@ -65,5 +65,3 @@ class Follow(models.Model):
                 fields=['author', 'user'],
                 name='unique_follower')
         ]
-    def __str__(self):
-        return self.author
