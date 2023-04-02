@@ -1,51 +1,42 @@
-from django.contrib.admin import ModelAdmin, register
+from django.contrib import admin
+from django.contrib.admin import display
 
-from recipes.models import (Favorite, Ingredient, Recipe, RecipeIngredient,
-                            ShoppingCart, Tag)
-
-
-@register(Ingredient)
-class IngredientAdmin(ModelAdmin):
-    list_display = ('name', 'measurement_unit')
-    search_fields = ('name',)
+from .models import (Favourite, Ingredient, IngredientInRecipe, Recipe,
+                     ShoppingCart, Tag)
 
 
-@register(Tag)
-class TagAdmin(ModelAdmin):
-    list_display = ('name', 'color', 'slug')
+@admin.register(Recipe)
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'id', 'author', 'added_in_favorites')
+    readonly_fields = ('added_in_favorites',)
+    list_filter = ('author', 'name', 'tags',)
+
+    @display(description='Количество в избранных')
+    def added_in_favorites(self, obj):
+        return obj.favorites.count()
 
 
-@register(Recipe)
-class RecipeAdmin(ModelAdmin):
-    list_display = ('name', 'author', 'pub_date', 'display_tags', 'favorite')
-    list_filter = ('name', 'author', 'tags')
-    search_fields = ('name',)
-    readonly_fields = ('favorite',)
-    fields = ('image',
-              ('name', 'author'),
-              'text',
-              ('tags', 'cooking_time'),
-              'favorite')
-
-    def display_tags(self, obj):
-        return ', '.join([tag.name for tag in obj.tags.all()])
-    display_tags.short_description = 'Теги'
-
-    def favorite(self, obj):
-        return obj.favorite.count()
-    favorite.short_description = 'Раз в избранном'
+@admin.register(Ingredient)
+class IngredientAdmin(admin.ModelAdmin):
+    list_display = ('name', 'measurement_unit',)
+    list_filter = ('name',)
 
 
-@register(RecipeIngredient)
-class RecipeIngredientAdmin(ModelAdmin):
-    list_display = ('recipe', 'ingredient', 'amount')
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color', 'slug',)
 
 
-@register(Favorite)
-class FavoriteAdmin(ModelAdmin):
-    list_display = ('recipe', 'user')
+@admin.register(ShoppingCart)
+class ShoppingCartAdmin(admin.ModelAdmin):
+    list_display = ('user', 'recipe',)
 
 
-@register(ShoppingCart)
-class ShoppingCartAdmin(ModelAdmin):
-    list_display = ('recipe', 'user')
+@admin.register(Favourite)
+class FavouriteAdmin(admin.ModelAdmin):
+    list_display = ('user', 'recipe',)
+
+
+@admin.register(IngredientInRecipe)
+class IngredientInRecipe(admin.ModelAdmin):
+    list_display = ('recipe', 'ingredient', 'amount',)
